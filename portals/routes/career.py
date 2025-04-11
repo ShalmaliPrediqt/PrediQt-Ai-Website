@@ -21,12 +21,12 @@ async def apply_for_job(
     resume: UploadFile = File(...),
     db: Session = Depends(get_db)
 ):
-    service = JobApplicationService(db)  # ✅ Using constructor
+    service = JobApplicationService(db) 
 
-    # ✅ Save resume and get public link
+    
     resume_url = service.save_resume(resume, email_address)
 
-    # ✅ Save job application
+   
     job_application = service.create_job_application(
         JobApplicationSchema(
             first_name=first_name,
@@ -38,7 +38,7 @@ async def apply_for_job(
             zip_code=zip_code,
             education_level_id=education_level_id,
             institute_name=institute_name,
-            resume_url=resume_url,  # ✅ Store direct resume link
+            resume_url=resume_url,
             why_to_join=why_to_join
         ), 
         resume_url
