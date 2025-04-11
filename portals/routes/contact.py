@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 #from grpc import services
 from sqlalchemy.orm import Session
 import models, schemas, database
-import schemas.contact as schemas  # ✅ Import with Namespace
+import schemas.contact as schemas 
 import services.contact_service as services
 
 
