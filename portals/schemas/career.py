@@ -20,25 +20,25 @@ class JobApplicationSchema(BaseModel):
     zip_code: str
     education_level_id: int
     institute_name: str
-    resume_url: HttpUrl  # ✅ Store direct link
+    resume_url: HttpUrl  
     why_to_join: str
 
     @validator("zip_code")
     def validate_zip_code(cls, value):
-        if not re.match(r"^\d{5,6}$", value):  # ✅ Zip code validation (5-6 digits)
+        if not re.match(r"^\d{5,6}$", value): 
             raise ValueError("Zip code must be 5-6 digits.")
         return value
 
     @validator("phone_number")
     def validate_phone_number(cls, value):
-        if not re.match(r"^\d{10,15}$", value):  # ✅ Phone number (10-15 digits)
+        if not re.match(r"^\d{10,15}$", value):  
             raise ValueError("Phone number must be between 10-15 digits.")
         return value
 
     @validator("why_to_join")
     def validate_why_to_join(cls, value):
         word_count = len(value.split())
-        if word_count > 100:  # ✅ Ensure text does not exceed 100 words
+        if word_count > 100: 
             raise ValueError("The 'Why to Join' section must not exceed 100 words.")
         return value
 
